@@ -1,20 +1,22 @@
-import './globals.css';
+import "./globals.css";
 
-import { GeistSans } from 'geist/font/sans';
+import { GeistSans } from "geist/font/sans";
+import { HeaderElement } from "./ui/header/header";
+import { FooterElement } from "./ui/footer/footer";
 
-let title = 'Next.js + Postgres Auth Starter';
+let title = "2day 4ward - Track today, focus forward";
 let description =
-  'This is a Next.js starter kit that uses NextAuth.js for simple email + password login and a Postgres database to persist the data.';
+  "2Day 4Ward helps you stay mindful of today and focused on tomorrow. Log your daily check-ins, set goals, and reflect on your progress with ease. Build positive habits one step at a time.";
 
 export const metadata = {
   title,
   description,
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title,
     description,
   },
-  metadataBase: new URL('https://nextjs-postgres-auth.vercel.app'),
+  metadataBase: new URL("https://nextjs-postgres-auth.vercel.app"),
 };
 
 export default function RootLayout({
@@ -24,7 +26,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={GeistSans.variable}>{children}</body>
+      <body className={GeistSans.variable}>
+        <HeaderElement />
+
+        {children}
+
+        <FooterElement />
+      </body>
     </html>
   );
 }

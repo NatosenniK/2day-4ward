@@ -1,6 +1,6 @@
-import { auth, signOut } from 'app/auth';
+import { auth, signOut } from "app/auth";
 
-export default async function ProtectedPage() {
+export default async function DashboardPage() {
   let session = await auth();
 
   return (
@@ -17,7 +17,7 @@ function SignOut() {
   return (
     <form
       action={async () => {
-        'use server';
+        "use server";
         await signOut();
       }}
     >

@@ -8,12 +8,12 @@ export function Form({
   return (
     <form
       action={action}
-      className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16"
+      className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16 dark:bg-slate-800"
     >
       <div>
         <label
           htmlFor="email"
-          className="block text-xs text-gray-600 uppercase"
+          className="block text-xs text-gray-600 uppercase dark:text-slate-400"
         >
           Email Address
         </label>
@@ -30,7 +30,7 @@ export function Form({
       <div>
         <label
           htmlFor="password"
-          className="block text-xs text-gray-600 uppercase"
+          className="block text-xs text-gray-600 uppercase dark:text-slate-400"
         >
           Password
         </label>
