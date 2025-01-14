@@ -14,9 +14,10 @@ export default function SiteLogo() {
     >
       <FontAwesomeIcon
         icon={faSmile}
-        className="fa-fw min-w-8 min-h-8 max-h-8"
+        className="fa-fw min-w-8 min-h-8 max-h-8 "
       />
-      <p className={`text-[30px] hidden lg:block px-2`}>2day 4ward</p>
+      <p className={`text-[30px] hidden md:block px-2`}>2day 4ward</p>
+      <div className="block md:hidden px-2"></div>
       <FontAwesomeIcon
         icon={faFrown}
         className="fa-fw min-w-8 min-h-8 max-h-8"

@@ -5,7 +5,7 @@ import { SubmitButton } from "app/submit-button";
 
 export default function Login() {
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-50 dark:bg-black">
+    <div className="flex h-screen items-center justify-center bg-gray-50 dark:bg-black px-4">
       <div className="z-10 w-full max-w-md overflow-hidden rounded-2xl border border-gray-100 shadow-xl dark:bg-slate-800">
         <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center sm:px-16 dark:bg-slate-800">
           <h3 className="text-xl font-semibold dark:text-white">Sign In</h3>
