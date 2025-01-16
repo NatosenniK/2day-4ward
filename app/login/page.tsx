@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { Form } from "app/form";
-import { signIn } from "app/auth";
 import { SubmitButton } from "app/submit-button";
+import { useActionState } from "react";
+import { loginUser } from "../lib/actions";
 
 export default function Login() {
+  const [errorMessage, formAction] = useActionState(loginUser, undefined);
+
   return (
     <div className="flex h-screen items-center justify-center bg-gray-50 dark:bg-black px-4">
       <div className="z-10 w-full max-w-md overflow-hidden rounded-2xl border border-gray-100 shadow-xl dark:bg-slate-800">
@@ -14,16 +19,7 @@ export default function Login() {
           </p>
         </div>
         <div className="dark:bg-slate-800">
-          <Form
-            action={async (formData: FormData) => {
-              "use server";
-              await signIn("credentials", {
-                redirectTo: "/dashboard",
-                email: formData.get("email") as string,
-                password: formData.get("password") as string,
-              });
-            }}
-          >
+          <Form action={formAction}>
             <SubmitButton>Sign in</SubmitButton>
             <p className="text-center text-sm text-gray-600 dark:text-slate-400">
               {"Don't have an account? "}
@@ -35,6 +31,7 @@ export default function Login() {
               </Link>
               {" for free."}
             </p>
+            <div className="text-red-700">{errorMessage}</div>
           </Form>
         </div>
       </div>
