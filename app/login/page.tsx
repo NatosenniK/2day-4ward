@@ -4,10 +4,10 @@ import Link from "next/link";
 import { Form } from "app/form";
 import { SubmitButton } from "app/submit-button";
 import { useActionState } from "react";
-import { loginUser } from "../lib/actions";
+import { authenticate } from "../lib/actions";
 
 export default function Login() {
-  const [errorMessage, formAction] = useActionState(loginUser, undefined);
+  const [errorMessage, formAction] = useActionState(authenticate, undefined);
 
   return (
     <div className="flex h-screen items-center justify-center bg-gray-50 dark:bg-black px-4">
