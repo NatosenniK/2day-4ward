@@ -5,9 +5,9 @@ export default async function DashboardPage() {
   let session = await auth();
 
   return (
-    <div className="flex h-screen bg-black">
-      <div className="w-screen h-screen flex flex-col space-y-5 justify-center items-center text-white">
-        <h3 className="text-[30px]">
+    <div className="flex flex-grow bg-black">
+      <div className="w-screen flex flex-col space-y-5 justify-center items-center text-white px-3">
+        <h3 className="text-[30px] text-center">
           How are you feeling today, {session?.user?.name}?
         </h3>
         <DashboardUI />

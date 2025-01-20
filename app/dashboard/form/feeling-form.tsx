@@ -8,7 +8,7 @@ export function FeelingForm({
   return (
     <form
       action={action}
-      className="flex flex-col rounded-md space-y-4 bg-gray-50 px-4 py-8 sm:px-16 dark:bg-slate-800"
+      className="flex flex-col rounded-md space-y-4 bg-gray-50 px-4 py-8 sm:px-16 dark:bg-slate-800 w-full max-w-2xl"
     >
       <div>
         <div className="mb-3">

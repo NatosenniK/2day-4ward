@@ -3,8 +3,8 @@ import SiteLogo from "./ui/layout/site-logo";
 
 export default function Page() {
   return (
-    <div className="flex h-screen bg-black">
-      <div className="w-screen h-screen flex flex-col justify-center items-center">
+    <div className="flex flex-grow w-full bg-black justify-center">
+      <div className="flex flex-col justify-center items-center">
         <div className="mb-4">
           <SiteLogo />
         </div>
