@@ -16,12 +16,13 @@ export async function registerUser(
 
   let email = formData.get("email") as string;
   let password = formData.get("password") as string;
+  let name = formData.get("name") as string;
   let user = await getUser(email);
 
   if (user) {
     return "User already exists";
   } else {
-    await createUser(email, password);
+    await createUser(email, password, name);
     redirect("/login");
   }
 }

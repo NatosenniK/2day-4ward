@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { Form } from "app/form";
-import { SubmitButton } from "app/submit-button";
+import { SubmitButton } from "@/app/ui/components/submit-button";
 import { useActionState } from "react";
 import { authenticate } from "../lib/actions";
+import { LoginForm } from "./login-form";
 
 export default function Login() {
   const [errorMessage, formAction] = useActionState(authenticate, undefined);
@@ -19,7 +19,7 @@ export default function Login() {
           </p>
         </div>
         <div className="dark:bg-slate-800">
-          <Form action={formAction}>
+          <LoginForm action={formAction}>
             <SubmitButton>Sign in</SubmitButton>
             <p className="text-center text-sm text-gray-600 dark:text-slate-400">
               {"Don't have an account? "}
@@ -32,7 +32,7 @@ export default function Login() {
               {" for free."}
             </p>
             <div className="text-red-700">{errorMessage}</div>
-          </Form>
+          </LoginForm>
         </div>
       </div>
     </div>

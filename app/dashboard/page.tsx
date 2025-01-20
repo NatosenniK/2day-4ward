@@ -1,4 +1,5 @@
 import { auth, signOut } from "app/auth";
+import DashboardUI from "./form/dashboard-ui";
 
 export default async function DashboardPage() {
   let session = await auth();
@@ -6,7 +7,10 @@ export default async function DashboardPage() {
   return (
     <div className="flex h-screen bg-black">
       <div className="w-screen h-screen flex flex-col space-y-5 justify-center items-center text-white">
-        You are logged in as {session?.user?.email}
+        <h3 className="text-[30px]">
+          How are you feeling today, {session?.user?.name}?
+        </h3>
+        <DashboardUI />
         <SignOut />
       </div>
     </div>

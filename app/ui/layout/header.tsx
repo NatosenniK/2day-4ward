@@ -1,4 +1,4 @@
-import SiteLogo from "../site-logo";
+import SiteLogo from "./site-logo";
 
 export function HeaderElement() {
   return (

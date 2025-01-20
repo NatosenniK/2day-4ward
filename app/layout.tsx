@@ -1,8 +1,8 @@
 import "./globals.css";
 
 import { GeistSans } from "geist/font/sans";
-import { HeaderElement } from "./ui/header/header";
-import { FooterElement } from "./ui/footer/footer";
+import { HeaderElement } from "./ui/layout/header";
+import { FooterElement } from "./ui/layout/footer";
 
 let title = "2day 4ward - Track today, focus forward";
 let description =
