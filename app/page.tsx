@@ -1,5 +1,5 @@
 import Link from "next/link";
-import SiteLogo from "./ui/site-logo";
+import SiteLogo from "./ui/layout/site-logo";
 
 export default function Page() {
   return (
