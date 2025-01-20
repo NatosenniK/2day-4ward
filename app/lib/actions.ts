@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { createUser, getUser } from "../db";
+import { createUser, createUserEntry, getUser } from "../db";
 import { auth, signIn } from "../auth";
 import { AuthError } from "next-auth";
 
@@ -73,5 +73,34 @@ export async function loginUser(
   } catch (error) {
     console.log(error);
     return "Invalid email or password";
+  }
+}
+
+export async function logToday(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    let mood = formData.get("mood") as string;
+    let today = formData.get("today") as string;
+    let yesterday = formData.get("yesterday") as string;
+
+    const session = await auth();
+
+    if (!session) {
+      return;
+    }
+
+    const userId = session.user?.id;
+    console.log(formData);
+
+    if (!userId) {
+      return;
+    }
+
+    await createUserEntry(parseInt(userId), mood, today, yesterday);
+  } catch (error) {
+    console.log(error);
+    return "Invalid entry for feelings form";
   }
 }

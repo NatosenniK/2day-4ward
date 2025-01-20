@@ -1,3 +1,6 @@
+import { faFrown, faMeh, faSmile } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export function FeelingForm({
   action,
   children,
@@ -13,49 +16,84 @@ export function FeelingForm({
       <div>
         <div className="mb-3">
           <label
-            htmlFor="feeling"
+            htmlFor="mood"
             className="block text-xs text-gray-600 uppercase dark:text-slate-400 mb-3"
           >
             What&apos;s your mood like?
           </label>
-          <div className="flex justify-between">
-            <div>
+          <ul className="grid w-full gap-6 md:grid-cols-3">
+            <li>
               <input
                 type="radio"
-                className="mr-3"
-                id="good"
-                name="feeling"
-                value="GOOD"
+                id="HAPPY"
+                name="mood"
+                value="HAPPY"
+                className="hidden peer"
+                required
               />
-              <label htmlFor="good">GOOD</label>
-            </div>
-
-            <div>
+              <label
+                htmlFor="HAPPY"
+                className="inline-flex items-center justify-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+              >
+                <div className="block">
+                  <div className="w-full text-lg font-semibold">
+                    <FontAwesomeIcon
+                      icon={faSmile}
+                      className="fa-fw min-w-8 min-h-8 max-h-8 peer-checked/bad:text-yellow-400"
+                    />
+                  </div>
+                </div>
+              </label>
+            </li>
+            <li>
               <input
                 type="radio"
-                className="mr-3"
-                id="meh"
-                name="feeling"
+                id="MEH"
+                name="mood"
                 value="MEH"
+                className="hidden peer"
               />
-              <label htmlFor="meh">MEH</label>
-            </div>
-
-            <div>
+              <label
+                htmlFor="MEH"
+                className="inline-flex items-center justify-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+              >
+                <div className="block">
+                  <div className="w-full text-lg font-semibold">
+                    <FontAwesomeIcon
+                      icon={faMeh}
+                      className="fa-fw min-w-8 min-h-8 max-h-8 peer-checked/bad:text-yellow-400"
+                    />
+                  </div>
+                </div>
+              </label>
+            </li>
+            <li>
               <input
                 type="radio"
-                className="mr-3"
-                id="bad"
-                name="feeling"
-                value="BAD"
+                id="SAD"
+                name="mood"
+                value="SAD"
+                className="hidden peer"
               />
-              <label htmlFor="bad">BAD</label>
-            </div>
-          </div>
+              <label
+                htmlFor="SAD"
+                className="inline-flex items-center justify-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+              >
+                <div className="block">
+                  <div className="w-full text-lg font-semibold">
+                    <FontAwesomeIcon
+                      icon={faFrown}
+                      className="fa-fw min-w-8 min-h-8 max-h-8 peer-checked/bad:text-yellow-400"
+                    />
+                  </div>
+                </div>
+              </label>
+            </li>
+          </ul>
         </div>
         <div className="mb-3">
           <label
-            htmlFor="feeling"
+            htmlFor="mood"
             className="block text-xs text-gray-600 uppercase dark:text-slate-400 mb-3"
           >
             What&apos;s one goal you want to accomplish today?
@@ -63,12 +101,13 @@ export function FeelingForm({
           <textarea
             className="dark:bg-slate-800 dark:text-white w-full border rounded-md p-2 text-black"
             rows={4}
+            name="today"
           />
         </div>
 
         <div className="mb-3">
           <label
-            htmlFor="feeling"
+            htmlFor="mood"
             className="block text-xs text-gray-600 uppercase dark:text-slate-400 mb-3"
           >
             Did you reach your goal yesterday? Why or why not?
@@ -76,6 +115,7 @@ export function FeelingForm({
           <textarea
             className="dark:bg-slate-800 dark:text-white w-full border rounded-md p-2 text-black"
             rows={4}
+            name="yesterday"
           />
         </div>
       </div>

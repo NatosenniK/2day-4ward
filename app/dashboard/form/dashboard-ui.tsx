@@ -3,10 +3,10 @@
 import { useActionState } from "react";
 import { FeelingForm } from "./feeling-form";
 import { SubmitButton } from "@/app/ui/components/submit-button";
-import { authenticate } from "@/app/lib/actions";
+import { logToday } from "@/app/lib/actions";
 
 export default function DashboardUI() {
-  const [errorMessage, formAction] = useActionState(authenticate, undefined);
+  const [errorMessage, formAction] = useActionState(logToday, undefined);
 
   return (
     <>
