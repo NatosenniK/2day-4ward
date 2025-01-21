@@ -6,7 +6,7 @@ import {
   integer,
   timestamp,
 } from "drizzle-orm/pg-core";
-import { eq } from "drizzle-orm";
+import { eq, gte, and } from "drizzle-orm";
 import postgres from "postgres";
 import { genSaltSync, hashSync } from "bcrypt-ts";
 
@@ -43,7 +43,6 @@ export async function getUser(email: string) {
     .limit(1)
     .then((rows) => rows[0] || null);
 
-  console.log("Login resp: ", resp);
   return resp;
 }
 
@@ -111,10 +110,31 @@ export async function createUserEntry(
 ) {
   const dailyLogTable = await ensureLogTableExists();
 
-  return await db.insert(DailyLogTable).values({
+  return await db.insert(dailyLogTable).values({
     user_id,
     mood,
     today,
     yesterday,
   });
+}
+
+export async function hasEntryToday(userId: string): Promise<boolean> {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Normalize to start of the day
+
+  const dailyLogTable = await ensureLogTableExists();
+
+  const entry = await db
+    .select()
+    .from(dailyLogTable)
+    .where(
+      and(
+        eq(dailyLogTable.user_id, Number(userId)),
+        gte(dailyLogTable.created_at, today)
+      )
+    )
+    .limit(1)
+    .then((rows) => rows[0] || null);
+
+  return !!entry;
 }

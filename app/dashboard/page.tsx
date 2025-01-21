@@ -1,8 +1,15 @@
 import { auth, signOut } from "app/auth";
 import DashboardUI from "./form/dashboard-ui";
+import { hasEntryToday } from "../db";
 
 export default async function DashboardPage() {
   let session = await auth();
+
+  if (!session || !session.user || !session.user.id) {
+    return <></>;
+  }
+
+  let hasUserLoggedToday = await hasEntryToday(session.user.id);
 
   return (
     <div className="flex flex-grow bg-black">
@@ -10,7 +17,7 @@ export default async function DashboardPage() {
         <h3 className="text-[30px] text-center">
           How are you feeling today, {session?.user?.name}?
         </h3>
-        <DashboardUI />
+        <DashboardUI hasUserLoggedToday={hasUserLoggedToday} />
         <SignOut />
       </div>
     </div>

@@ -57,15 +57,12 @@ export async function loginUser(
       password: formData.get("password") as string,
     });
 
-    console.log("Sign-in result:", result);
-
     if (result?.error) {
       return "Invalid email or password";
     }
 
     // Manually fetch session to update state
     const session = await auth();
-    console.log("Session after login:", session);
 
     if (session?.user) {
       redirect("/dashboard"); // Ensure redirection once session updates
