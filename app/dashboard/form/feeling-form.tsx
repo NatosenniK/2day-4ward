@@ -21,7 +21,7 @@ export function FeelingForm({
           >
             What&apos;s your mood like?
           </label>
-          <ul className="grid w-full gap-6 md:grid-cols-3">
+          <ul className="grid w-full gap-6 grid-cols-3">
             <li>
               <input
                 type="radio"
@@ -99,7 +99,7 @@ export function FeelingForm({
             What&apos;s one goal you want to accomplish today?
           </label>
           <textarea
-            className="dark:bg-slate-800 dark:text-white w-full border rounded-md p-2 text-black"
+            className="dark:bg-slate-800 dark:text-white w-full border rounded-md p-2 text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
             rows={4}
             name="today"
           />
@@ -113,7 +113,7 @@ export function FeelingForm({
             Did you reach your goal yesterday? Why or why not?
           </label>
           <textarea
-            className="dark:bg-slate-800 dark:text-white w-full border rounded-md p-2 text-black"
+            className="dark:bg-slate-800 dark:text-white w-full border rounded-md p-2 text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
             rows={4}
             name="yesterday"
           />

@@ -74,7 +74,7 @@ export async function loginUser(
 }
 
 export async function logToday(
-  prevState: string | undefined,
+  state: { success: boolean; message?: string } | undefined,
   formData: FormData
 ) {
   try {
@@ -85,19 +85,32 @@ export async function logToday(
     const session = await auth();
 
     if (!session) {
-      return;
+      return {
+        success: false,
+        message: "No user session",
+      };
     }
 
     const userId = session.user?.id;
     console.log(formData);
 
     if (!userId) {
-      return;
+      return {
+        success: false,
+        message: "No user ID",
+      };
     }
 
     await createUserEntry(parseInt(userId), mood, today, yesterday);
+
+    return {
+      success: true,
+    };
   } catch (error) {
     console.log(error);
-    return "Invalid entry for feelings form";
+    return {
+      success: false,
+      message: "Invalid entry for feelings form",
+    };
   }
 }

@@ -12,12 +12,12 @@ export default async function DashboardPage() {
   let hasUserLoggedToday = await hasEntryToday(session.user.id);
 
   return (
-    <div className="flex flex-grow bg-black">
+    <div className="flex flex-grow bg-black py-10">
       <div className="w-screen flex flex-col space-y-5 justify-center items-center text-white px-3">
-        <h3 className="text-[30px] text-center">
-          How are you feeling today, {session?.user?.name}?
-        </h3>
-        <DashboardUI hasUserLoggedToday={hasUserLoggedToday} />
+        <DashboardUI
+          hasUserLoggedToday={hasUserLoggedToday}
+          name={session.user.name ? session.user.name : "User"}
+        />
         <SignOut />
       </div>
     </div>
