@@ -6,9 +6,10 @@ import {
   integer,
   timestamp,
 } from "drizzle-orm/pg-core";
-import { eq, gte, and } from "drizzle-orm";
+import { eq, gte, and, lte, desc } from "drizzle-orm";
 import postgres from "postgres";
 import { genSaltSync, hashSync } from "bcrypt-ts";
+import { DailyLogs } from "./types";
 
 // Optionally, if not using email/pass login, you can
 // use the Drizzle adapter for Auth.js / NextAuth
@@ -137,4 +138,32 @@ export async function hasEntryToday(userId: string): Promise<boolean> {
     .then((rows) => rows[0] || null);
 
   return !!entry;
+}
+
+export async function fetchWeeklyRecap(userId: string): Promise<DailyLogs> {
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+  const today = new Date();
+
+  const dailyLogTable = await ensureLogTableExists();
+
+  const entries = await db
+    .select()
+    .from(dailyLogTable)
+    .where(
+      and(
+        eq(dailyLogTable.user_id, Number(userId)),
+        gte(dailyLogTable.created_at, sevenDaysAgo),
+        lte(dailyLogTable.created_at, today)
+      )
+    )
+    .orderBy(desc(dailyLogTable.created_at))
+    .then((rows) => rows);
+
+  return entries.map((entry) => ({
+    mood: entry.mood ?? "UNKNOWN",
+    today: entry.today ?? "",
+    yesterday: entry.yesterday ?? "",
+  }));
 }

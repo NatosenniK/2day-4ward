@@ -92,7 +92,6 @@ export async function logToday(
     }
 
     const userId = session.user?.id;
-    console.log(formData);
 
     if (!userId) {
       return {
